@@ -40,4 +40,12 @@ defmodule Cards do
 
 
 
+  # load our deck from the file system
+  def load(filename) do
+    {status , binary} = File.read(filename)
+    deck = :erlang.binary_to_term(binary)
+  end
+
+
+
 end
