@@ -12,6 +12,8 @@ defmodule Cards do
         "#{value} of #{suit}"
     end
 
+        # {hand , rest_deck} = cards.deal(deck , hand_size)
+
   end
 
   def shuffle_deck(deck) do
