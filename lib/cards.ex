@@ -7,10 +7,9 @@ defmodule Cards do
     values = ["Ace", "Two", "Three", "Four", "Five", "Six"]
     suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
 
-    cards =
-      for value <- values, suit <- suits do
-        "#{value} of #{suit}"
-      end
+    for value <- values, suit <- suits do
+      "#{value} of #{suit}"
+    end
 
     # {hand , rest_deck} = cards.deal(deck , hand_size)
   end
@@ -40,7 +39,7 @@ defmodule Cards do
   def load(filename) do
     case File.read(filename) do
       {:ok, binary} -> :erlang.binary_to_term(binary)
-      {:error, reason} -> "Something wrong happens ! #{reason} "
+      {:error, _reason} -> "Something wrong happens ! "
     end
   end
 end
