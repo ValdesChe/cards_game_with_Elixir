@@ -42,4 +42,10 @@ defmodule Cards do
       {:error, _reason} -> "Something wrong happens ! "
     end
   end
+
+  def create_hand(hand_size) do
+    Cards.create_deck()
+    |> Cards.shuffle_deck()
+    |> Cards.deal(hand_size)
+  end
 end
