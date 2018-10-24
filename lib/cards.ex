@@ -20,6 +20,10 @@ defmodule Cards do
     "Some "
   end
 
+  def create_deck do
+    ['Jupiter']
+  end
+
 
 
 end
