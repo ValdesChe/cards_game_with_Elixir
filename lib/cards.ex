@@ -1,55 +1,46 @@
 defmodule Cards do
-
   def hello do
     :world
   end
 
   def create_deck do
-    values = ["Ace", "Two", "Three" , "Four", "Five" , "Six"]
-    suits = ["Spades", "Clubs", "Hearts" , "Diamonds"]
+    values = ["Ace", "Two", "Three", "Four", "Five", "Six"]
+    suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
 
-    cards = for value <- values , suit <- suits do
+    cards =
+      for value <- values, suit <- suits do
         "#{value} of #{suit}"
-    end
+      end
 
-        # {hand , rest_deck} = cards.deal(deck , hand_size)
-
+    # {hand , rest_deck} = cards.deal(deck , hand_size)
   end
 
   def shuffle_deck(deck) do
     Enum.shuffle(deck)
   end
 
-
-  def contains?(deck , card) do
-    Enum.member?(deck,card)
+  def contains?(deck, card) do
+    Enum.member?(deck, card)
   end
 
-  def deal(deck , hand_size) do
-    Enum.split(deck,hand_size)
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
   end
 
   # save our deck into a file system
-  def save(deck ,filename) do
+  def save(deck, filename) do
     # Casting deck into binary object
     binary = :erlang.term_to_binary(deck)
 
     # Saving binary into a file called filename
-    File.write(filename,binary)
+    File.write(filename, binary)
   end
-
-
 
   # load our deck from the file system
   def load(filename) do
-    {status , binary} = File.read(filename)
-    case status do
-      :ok -> :erlang.binary_to_term(binary)
-      :error -> "Something wrong happens !"
+    case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term(binary)
+      {:error, reason} -> "Something wrong happens ! #{reason} "
     end
-
   end
-
-
-
 end
