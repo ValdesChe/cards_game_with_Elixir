@@ -15,4 +15,11 @@ defmodule Cards do
   def hello do
     :world
   end
+
+  def sSome do
+    "Some "
+  end
+
+
+
 end
